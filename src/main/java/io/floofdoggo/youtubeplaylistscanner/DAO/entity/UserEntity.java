@@ -16,8 +16,9 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @NotNull
+    @Column(unique = true)
     @Length(min = 6, max = 40, message = "Your login must have at least 6 characters.")
-    private String login;
+    private String username;
     @NotNull(message = "You must enter your password.")
     @Length(min = 6, message = "Your password must have at least 6 characters.")
     private String password;
@@ -28,8 +29,8 @@ public class UserEntity {
     @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL)
     private Set<PlaylistEntity> playlistEntities;
 
-    public UserEntity(String login, String password, String email, Integer role) {
-        this.login = login;
+    public UserEntity(String username, String password, String email, Integer role) {
+        this.username = username;
         this.password = password;
         this.email = email;
         this.role = role;
@@ -47,12 +48,12 @@ public class UserEntity {
         this.id = id;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -91,7 +92,7 @@ public class UserEntity {
     public String toString() {
         return "UserEntity{" +
                 "id=" + id +
-                ", login='" + login + '\'' +
+                ", login='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", role=" + role +

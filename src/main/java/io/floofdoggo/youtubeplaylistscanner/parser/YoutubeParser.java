@@ -11,7 +11,7 @@ import java.util.List;
 
 public class YoutubeParser {
 
-    private final String API_KEY = "[YOUR_KEY]";
+    private final String API_KEY = "[API_KEY]";
     private ObjectMapper objectMapper = new ObjectMapper();
 
     public List<Video> getPlaylistVideos(String playlistId){
