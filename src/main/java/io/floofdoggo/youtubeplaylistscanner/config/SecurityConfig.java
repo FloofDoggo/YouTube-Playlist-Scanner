@@ -1,6 +1,6 @@
 package io.floofdoggo.youtubeplaylistscanner.config;
 
-import io.floofdoggo.youtubeplaylistscanner.sevice.MyUserDetailService;
+import io.floofdoggo.youtubeplaylistscanner.sevice.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +17,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
     @Autowired
-    private MyUserDetailService userDetailService;
+    private UserDetailServiceImpl userDetailService;
 
 
     @Override

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - YouTube Playlist Scanner</title>
+</head>
+<body>
+
+<div class="container">
+    <h1>Registration</h1>
+    <form th:action="@{/register}" th:object="${userEntity}" method="post">
+        <div class="form-field">
+            <label class="username-field">Username</label>
+            <input id="username" th:field="*{username}"/>
+        </div>
+        <div class="form-field">
+            <label class="username-field">Password</label>
+            <input id="password" th:field="*{password}"/>
+        </div>
+        <div class="form-field">
+            <label class="username-field">Email</label>
+            <input id="email" th:field="*{email}"/>
+        </div>
+        <div class="form-button">
+            <button type="submit" class="button">Register</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
