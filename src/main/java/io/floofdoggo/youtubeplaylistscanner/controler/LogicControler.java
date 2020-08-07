@@ -22,7 +22,8 @@ public class LogicControler {
     private UserDetailServiceImpl userDetailService;
 
     @GetMapping("/")
-    public String hello(){
+    public String hello(Model model){
+
         //parserService.saveAll("UC8d8GkPcfQGa8lWAnqhElWg");
         return "index";
     }

@@ -1,0 +1,12 @@
+body{
+    background-color: #f2f2f2;
+}
+
+.container-fluid{
+    font-family: 'Roboto', sans-serif;
+    padding: 2%;
+}
+
+.navbar-dark{
+    background-color: #E50000;
+}

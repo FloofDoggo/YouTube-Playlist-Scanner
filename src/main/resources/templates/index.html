@@ -1,14 +1,85 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <title>YouTube Playlist Scanner</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="static/style.css" th:href="@{/style.css}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1 th:inline="text">Hello</h1>
 
-<div>
 
+<nav class="navbar navbar-dark navbar-expand-lg navbar-light">
+    <a class="navbar-brand">YouTube Playlist Scanner <span class="badge badge-secondary">Alpha 0.01v</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li sec:authorize="isAnonymous()" class="nav-item">
+                <a class="nav-link" th:href="@{/register}">Register</a>
+            </li>
+            <li sec:authorize="isAuthenticated()" class="nav-item">
+                <a class="nav-link" th:href="@{/playlists}">Playlists</a>
+            </li>
+        </ul>
+        <div class="text mt-2 mt-md-0">
+            <div class="navbar-text p-0" sec:authorize="isAuthenticated()">
+                <button type="submit" class="btn btn-dark">LOGOUT</button>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="jumbotron border border-dark">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et purus sed libero pretium laoreet et hendrerit erat. Vivamus nisi nisi, sagittis eu cursus eu, venenatis ac nibh. Sed porttitor eros at nisi suscipit, non interdum enim hendrerit. Cras ornare lobortis ultricies. Donec velit orci, malesuada vitae laoreet et, consequat nec nunc. Vestibulum dapibus augue ut tortor venenatis facilisis. Nam ut orci turpis. Aenean in velit in eros tempor varius sit amet eu diam. Duis vitae lacinia quam. Etiam at metus eros. Aliquam hendrerit, libero vel tempor rutrum, lorem enim faucibus ante, non lacinia neque nulla vitae ipsum. Aenean id fringilla ante. Fusce cursus finibus enim, quis bibendum nunc condimentum eu. Fusce lacinia nisl enim, vitae venenatis ipsum commodo vel. Nulla consectetur ligula ut massa mollis, in maximus urna molestie. Nullam nec suscipit lacus.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et purus sed libero pretium laoreet et hendrerit erat. Vivamus nisi nisi, sagittis eu cursus eu, venenatis ac nibh.
+                </p>
+            </div>
+        </div>
+        <div class="col">
+            <div sec:authorize="isAnonymous()" class="jumbotron border border-dark">
+                <h1 class="display-4">Check your playlists!</h1>
+                <hr class="my-4">
+                <form th:action="@{/login}" method="post">
+                    <div class="row">
+                        <div class="col-sm">
+                            <label for="username">Username</label><br/>
+                            <input type="text" id="username" name="username" class="form-control" placeholder="Username"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col py-sm-3">
+                            <label for="password">Password</label><br/>
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Password"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-actions col py-sm-3">
+                            <button type="submit" class="btn btn-danger btn-lg">LOGIN</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div sec:authorize="isAuthenticated()" class="jumbotron border border-dark">
+                <h1 class="display-4">Hello <span sec:authentication="name"></span>!</h1>
+                <hr class="my-4">
+                <h3>
+                    Nice to see you!
+                    I hope you enjoy my application :)
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+    </div>
 </div>
 </body>
 </html>

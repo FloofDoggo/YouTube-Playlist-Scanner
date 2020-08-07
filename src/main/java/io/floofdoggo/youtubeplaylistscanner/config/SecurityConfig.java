@@ -30,8 +30,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/playlists").hasRole("USER")
                 .antMatchers("/").permitAll()
-                .and()
-                .formLogin();
+                    .and()
+                .formLogin()
+                    .defaultSuccessUrl("/playlists")
+                    .permitAll();
     }
 
     @Bean

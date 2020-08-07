@@ -1,8 +1,6 @@
 package io.floofdoggo.youtubeplaylistscanner.DAO.entity;
 
 import org.hibernate.validator.constraints.Length;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
