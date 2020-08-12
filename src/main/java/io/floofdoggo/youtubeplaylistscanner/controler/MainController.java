@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 
 @Controller
-public class LogicControler {
+public class MainController {
 
     @Autowired
     private ParserService parserService;
@@ -23,13 +23,13 @@ public class LogicControler {
 
     @GetMapping("/")
     public String hello(Model model){
-
         //parserService.saveAll("UC8d8GkPcfQGa8lWAnqhElWg");
         return "index";
     }
 
     @GetMapping("/playlists")
-    public String playlists(){
+    public String playlists(Model model){
+        model.addAttribute("playlists", parserService.getCurrentUserPlaylists());
         return "playlists";
     }
 

@@ -15,15 +15,17 @@ public class PlaylistEntity {
     @JoinColumn(name = "user_id")
     private UserEntity userEntity;
     private String name;
+    private String playlist_thumbnail;
     @NotNull(message = "The playlist must have its own code.")
     private String playlist_code;
     @OneToMany(mappedBy = "playlistEntity", cascade = CascadeType.ALL)
     private Set<VideoEntity> videoEntities;
 
-    public PlaylistEntity(UserEntity userEntity, String name, String playlist_code) {
+    public PlaylistEntity(UserEntity userEntity, String name, String playlist_code, String playlist_thumbnail) {
         this.userEntity = userEntity;
         this.name = name;
         this.playlist_code = playlist_code;
+        this.playlist_thumbnail = playlist_thumbnail;
     }
 
     public PlaylistEntity() {
@@ -69,13 +71,23 @@ public class PlaylistEntity {
         this.videoEntities = videoEntities;
     }
 
+    public String getPlaylist_thumbnail() {
+        return playlist_thumbnail;
+    }
+
+    public void setPlaylist_thumbnail(String playlist_thumbnail) {
+        this.playlist_thumbnail = playlist_thumbnail;
+    }
+
     @Override
     public String toString() {
         return "PlaylistEntity{" +
                 "id=" + id +
                 ", userEntity=" + userEntity +
                 ", name='" + name + '\'' +
+                ", playlist_thumbnail='" + playlist_thumbnail + '\'' +
                 ", playlist_code='" + playlist_code + '\'' +
+                ", videoEntities=" + videoEntities +
                 '}';
     }
 }

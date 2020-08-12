@@ -5,11 +5,13 @@ public class PlaylistInfo {
     private String playlistId;
     private String title;
     private String publishedAt;
+    private String thumbnailUrl;
 
-    public PlaylistInfo(String playlistId, String title, String publishedAt) {
+    public PlaylistInfo(String playlistId, String title, String publishedAt, String thumbnailUrl) {
         this.playlistId = playlistId;
         this.title = title;
         this.publishedAt = publishedAt;
+        this.thumbnailUrl = thumbnailUrl;
     }
 
     public PlaylistInfo() {
@@ -39,12 +41,21 @@ public class PlaylistInfo {
         this.publishedAt = publishedAt;
     }
 
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
+
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
+    }
+
     @Override
     public String toString() {
         return "PlaylistInfo{" +
                 "playlistId='" + playlistId + '\'' +
                 ", title='" + title + '\'' +
                 ", publishedAt='" + publishedAt + '\'' +
+                ", thumbnailUrl='" + thumbnailUrl + '\'' +
                 '}';
     }
 }

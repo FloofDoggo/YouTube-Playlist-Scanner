@@ -10,3 +10,7 @@ body{
 .navbar-dark{
     background-color: #E50000;
 }
+
+.card{
+    width: 300px;
+}

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <title>YouTube Playlist Scanner</title>
+    <title>Playlists - YouTube Playlist Scanner</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="static/style.css" th:href="@{/style.css}" rel="stylesheet">
@@ -25,10 +25,29 @@
         </ul>
         <div class="text mt-2 mt-md-0">
             <div class="navbar-text p-0" sec:authorize="isAuthenticated()">
-                <button type="submit" class="btn btn-dark">LOGOUT</button>
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="btn btn-dark">LOGOUT</button>
+                </form>
             </div>
         </div>
     </div>
 </nav>
+<div class="container-fluid">
+    <div class="jumbotron border border-dark">
+        <div class="row">
+                <div th:each="playlist,iter: ${playlists}" class="col">
+                    <div class="card">
+                        <img class="card-img-top" th:src="${playlist.getPlaylist_thumbnail()}" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-title"th:text="${playlist.getName()}"></p>
+                            <hr class="my-4">
+                            <a href="#" class="btn btn-primary">Check</a>
+                            <a href="#" class="btn btn-primary">Observe</a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

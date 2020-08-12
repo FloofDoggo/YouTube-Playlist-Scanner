@@ -36,7 +36,6 @@ public class YoutubeParser {
                         .stream()
                         .map(x -> x.getSnippet())
                         .forEach(x -> playlistItemList.add(x));
-
             }catch (Exception ex){
                 ex.printStackTrace();
                 break;
@@ -57,7 +56,7 @@ public class YoutubeParser {
                                 "channelId="+ channelId +
                                 "&pageToken=" + nextPageToken +
                                 "&key=" + API_KEY +
-                                "&fields=items(snippet/title,snippet/publishedAt,id),nextPageToken" +
+                                "&fields=items(snippet/title,snippet/publishedAt,snippet/thumbnails/medium/url,id),nextPageToken" +
                                 "&part=snippet" +
                                 "&maxResults=50"));
 
@@ -72,6 +71,7 @@ public class YoutubeParser {
                             playlistInfo.setPlaylistId(x.getId());
                             playlistInfo.setPublishedAt(x.getSnippet().getPublishedAt());
                             playlistInfo.setTitle(x.getSnippet().getTitle());
+                            playlistInfo.setThumbnailUrl(x.getSnippet().getThumbnails().getMedium().getUrl());
                             playlistsList.add(playlistInfo);
                         });
 

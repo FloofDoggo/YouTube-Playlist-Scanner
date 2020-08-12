@@ -9,3 +9,6 @@ target/
 mvnw.cmd
 mvnw
 .mvn/
+
+### KEY ###
+api_key.txt

@@ -28,7 +28,9 @@
         </ul>
         <div class="text mt-2 mt-md-0">
             <div class="navbar-text p-0" sec:authorize="isAuthenticated()">
-                <button type="submit" class="btn btn-dark">LOGOUT</button>
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="btn btn-dark">LOGOUT</button>
+                </form>
             </div>
         </div>
     </div>

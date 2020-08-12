@@ -5,28 +5,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Register - YouTube Playlist Scanner</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="static/style.css" th:href="@{/style.css}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<div class="container">
-    <h1>Registration</h1>
+<nav class="navbar navbar-dark navbar-expand-lg navbar-light">
+    <a class="navbar-brand">YouTube Playlist Scanner <span class="badge badge-secondary">Alpha 0.01v</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/}">Home</a>
+            </li>
+        </ul>
+        <div class="text mt-2 mt-md-0">
+            <div class="navbar-text p-0" sec:authorize="isAuthenticated()">
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="btn btn-dark">LOGOUT</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div sec:authorize="isAnonymous()" class="jumbotron border border-dark">
     <form th:action="@{/register}" th:object="${userEntity}" method="post">
-        <div class="form-field">
-            <label class="username-field">Username</label>
-            <input id="username" th:field="*{username}"/>
+        <div class="row">
+            <div class="col py-sm-2">
+                <label for="username">Username</label><br/>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Username" th:field="*{username}"/>
+            </div>
         </div>
-        <div class="form-field">
-            <label class="username-field">Password</label>
-            <input id="password" th:field="*{password}"/>
+        <div class="row">
+            <div class="col py-sm-2">
+                <label for="password">Password</label><br/>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password" th:field="*{password}"/>
+            </div>
         </div>
-        <div class="form-field">
-            <label class="username-field">Email</label>
-            <input id="email" th:field="*{email}"/>
+        <div class="row">
+            <div class="col py-sm-2">
+                <label for="email">Email</label><br/>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email" th:field="*{email}"/>
+            </div>
         </div>
-        <div class="form-button">
-            <button type="submit" class="button">Register</button>
+        <div class="row">
+            <div class="form-actions col py-sm-3">
+                <button type="submit" class="btn btn-danger btn-lg">SIGNUP</button>
+            </div>
         </div>
     </form>
+    </div>
 </div>
 </body>
 </html>
