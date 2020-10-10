@@ -2,25 +2,22 @@ package io.floofdoggo.youtubeplaylistscanner.parser.domain;
 
 public class Playlist {
 
-    private String publishedAt;
+    private String id;
     private String title;
-    private PlaylistThumbnail thumbnails;
+    private String thumbnailUrl;
 
-    public Playlist(String publishedAt, String title, PlaylistThumbnail thumbnails) {
-        this.publishedAt = publishedAt;
+    public Playlist(String id, String title, String thumbnailUrl) {
+        this.id = id;
         this.title = title;
-        this.thumbnails = thumbnails;
+        this.thumbnailUrl = thumbnailUrl;
     }
 
-    public Playlist() {
+    public String getId() {
+        return id;
     }
 
-    public String getPublishedAt() {
-        return publishedAt;
-    }
-
-    public void setPublishedAt(String publishedAt) {
-        this.publishedAt = publishedAt;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -31,11 +28,11 @@ public class Playlist {
         this.title = title;
     }
 
-    public PlaylistThumbnail getThumbnails() {
-        return thumbnails;
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
     }
 
-    public void setThumbnails(PlaylistThumbnail thumbnails) {
-        this.thumbnails = thumbnails;
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 }

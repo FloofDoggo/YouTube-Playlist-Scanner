@@ -33,6 +33,24 @@
     </div>
 </nav>
 <div class="container-fluid">
+    <form id="playlist" th:action="@{/playlistid}" th:object="${playlistId}" method="post">
+        <div class="row">
+            <div class="col py-sm-2">
+                <label for="playlistId">Playlist ID</label><br/>
+                <input type="text" id="playlistId" name="playlistId" class="form-control"/>
+                <button type="submit" class="btn btn-dark">SUBMIT</button>
+            </div>
+        </div>
+    </form>
+    <form id="channel" th:action="@{/channelid}" th:object="${channelId}" method="post">
+        <div class="row">
+            <div class="col py-sm-2">
+                <label for="channelId">Channel ID</label><br/>
+                <input type="text" id="channelId" name="channelId" class="form-control"/>
+                <button type="submit" class="btn btn-dark">SUBMIT</button>
+            </div>
+        </div>
+    </form>
     <div class="jumbotron border border-dark">
         <div class="row">
                 <div th:each="playlist,iter: ${playlists}" class="col">
@@ -42,7 +60,7 @@
                             <p class="card-title"th:text="${playlist.getName()}"></p>
                             <hr class="my-4">
                             <a href="#" class="btn btn-primary">Check</a>
-                            <a href="#" class="btn btn-primary">Observe</a>
+                            <a href="#" class="btn btn-primary">Delete</a>
                         </div>
                     </div>
                 </div>

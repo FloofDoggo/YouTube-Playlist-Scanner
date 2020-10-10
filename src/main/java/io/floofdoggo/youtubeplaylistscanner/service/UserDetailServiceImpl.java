@@ -1,8 +1,8 @@
-package io.floofdoggo.youtubeplaylistscanner.sevice;
+package io.floofdoggo.youtubeplaylistscanner.service;
 
-import io.floofdoggo.youtubeplaylistscanner.DAO.UserDetailsImpl;
 import io.floofdoggo.youtubeplaylistscanner.DAO.UserRepository;
 import io.floofdoggo.youtubeplaylistscanner.DAO.entity.UserEntity;
+import io.floofdoggo.youtubeplaylistscanner.config.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,7 +17,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
     private UserRepository userRepository;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
-
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
@@ -35,5 +34,4 @@ public class UserDetailServiceImpl implements UserDetailsService {
     public UserEntity findUserByUsername(String username){
         return userRepository.findByUsername(username);
     }
-
 }

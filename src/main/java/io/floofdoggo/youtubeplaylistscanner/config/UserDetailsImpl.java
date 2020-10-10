@@ -1,4 +1,4 @@
-package io.floofdoggo.youtubeplaylistscanner.DAO;
+package io.floofdoggo.youtubeplaylistscanner.config;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

@@ -2,23 +2,12 @@ package io.floofdoggo.youtubeplaylistscanner.parser.domain;
 
 public class Video {
 
-    private String publishedAt;
     private String title;
+    private String videoId;
 
-    public Video(String publishedAt, String title) {
-        this.publishedAt = publishedAt;
+    public Video(String title, String videoId) {
         this.title = title;
-    }
-
-    public Video() {
-    }
-
-    public String getPublishedAt() {
-        return publishedAt;
-    }
-
-    public void setPublishedAt(String publishedAt) {
-        this.publishedAt = publishedAt;
+        this.videoId = videoId;
     }
 
     public String getTitle() {
@@ -27,5 +16,13 @@ public class Video {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(String videoId) {
+        this.videoId = videoId;
     }
 }

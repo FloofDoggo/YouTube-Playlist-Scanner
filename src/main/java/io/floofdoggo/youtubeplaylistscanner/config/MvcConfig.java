@@ -16,4 +16,5 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/playlists")
                 .setViewName("playlists");
     }
+
 }

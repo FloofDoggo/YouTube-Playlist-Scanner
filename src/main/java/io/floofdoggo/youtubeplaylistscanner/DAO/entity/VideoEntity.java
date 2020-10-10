@@ -1,6 +1,8 @@
 package io.floofdoggo.youtubeplaylistscanner.DAO.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "video")
@@ -9,28 +11,18 @@ public class VideoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String video_id;
+    private String title;
     @ManyToOne
     @JoinColumn(name = "playlist_id")
-    private PlaylistEntity playlistEntity;
-    private String title;
-    private String uploaded_at;
+    private PlaylistEntity playlists;
 
-    public VideoEntity(String title, String uploaded_at) {
+    public VideoEntity(String video_id, String title) {
+        this.video_id = video_id;
         this.title = title;
-        this.uploaded_at = uploaded_at;
     }
 
     public VideoEntity() {
-    }
-
-    @Override
-    public String toString() {
-        return "VideoEntity{" +
-                "id=" + id +
-                ", playlistEntity=" + playlistEntity +
-                ", title='" + title + '\'' +
-                ", uploaded_at='" + uploaded_at + '\'' +
-                '}';
     }
 
     public Integer getId() {
@@ -41,12 +33,12 @@ public class VideoEntity {
         this.id = id;
     }
 
-    public PlaylistEntity getPlaylistEntity() {
-        return playlistEntity;
+    public String getVideo_id() {
+        return video_id;
     }
 
-    public void setPlaylistEntity(PlaylistEntity playlistEntity) {
-        this.playlistEntity = playlistEntity;
+    public void setVideo_id(String video_id) {
+        this.video_id = video_id;
     }
 
     public String getTitle() {
@@ -57,11 +49,11 @@ public class VideoEntity {
         this.title = title;
     }
 
-    public String getUploaded_at() {
-        return uploaded_at;
+    public PlaylistEntity getPlaylists() {
+        return playlists;
     }
 
-    public void setUploaded_at(String uploaded_at) {
-        this.uploaded_at = uploaded_at;
+    public void setPlaylists(PlaylistEntity playlists) {
+        this.playlists = playlists;
     }
 }

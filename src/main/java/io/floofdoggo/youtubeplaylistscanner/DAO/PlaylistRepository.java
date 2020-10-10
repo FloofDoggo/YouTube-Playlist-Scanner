@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PlaylistRepository extends CrudRepository<PlaylistEntity, Integer> {
+    //PlaylistEntity findByPlaylist_id(String playlistId);
 }

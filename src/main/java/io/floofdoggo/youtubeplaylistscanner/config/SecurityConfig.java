@@ -1,6 +1,6 @@
 package io.floofdoggo.youtubeplaylistscanner.config;
 
-import io.floofdoggo.youtubeplaylistscanner.sevice.UserDetailServiceImpl;
+import io.floofdoggo.youtubeplaylistscanner.service.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,25 +32,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/playlists").hasRole("USER")
                 .antMatchers("/").permitAll()
-                    .and()
-                .formLogin()
-                    .defaultSuccessUrl("/playlists")
-                    .permitAll()
                 .and()
-                    .logout()
-                    .logoutSuccessUrl("/")
-                    .addLogoutHandler((request, response, auth) -> {
-                        for (Cookie cookie : request.getCookies()) {
-                            String cookieName = cookie.getName();
-                            Cookie cookieToDelete = new Cookie(cookieName, null);
-                            cookieToDelete.setMaxAge(0);
-                            response.addCookie(cookieToDelete);
-                        }
-                    });
+                .formLogin()
+                .defaultSuccessUrl("/playlists")
+                .permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/")
+                .addLogoutHandler((request, response, auth) -> {
+                    for (Cookie cookie : request.getCookies()) {
+                        String cookieName = cookie.getName();
+                        Cookie cookieToDelete = new Cookie(cookieName, null);
+                        cookieToDelete.setMaxAge(0);
+                        response.addCookie(cookieToDelete);
+                    }
+                });
     }
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
 }
